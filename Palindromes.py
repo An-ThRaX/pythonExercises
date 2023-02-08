@@ -1,4 +1,4 @@
-# palindrome
+# palindrome - verify that 1st and last are equal - go on
 def is_palindrome(txt):
     for i in range(int(len(txt) / 2)):
         if txt[i] != txt[len(txt) - i - 1]:
@@ -14,4 +14,3 @@ if is_palindrome(text):
     print("It's a palindrome")
 else:
     print("It's not a palindrome")
-

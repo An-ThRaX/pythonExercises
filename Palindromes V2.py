@@ -1,4 +1,4 @@
-# palindromes 2nd attempt
+# palindromes 2nd attempt - transposition the text into a new list and check if they are equal
 text = input('Please insert your palindrome: ').lower()
 while len(text) == 0:
     text = input('Please insert a valid palindrome: ').lower()
