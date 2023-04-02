@@ -31,4 +31,4 @@ try:
 except IOError as e:
     print("I/O Error", strerror(e.errno))
 
-# os.remove("samplefile.txt")  # delete the created file
+os.remove("samplefile.txt")  # delete the created file
