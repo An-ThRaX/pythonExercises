@@ -1,0 +1,34 @@
+import random, string, os
+from os import strerror
+
+
+def get_random_string(length):  # define a function to generate a random text to be used
+    letters = string.ascii_letters
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
+
+sample = open("samplefile.txt", 'wt')  # create an open a file
+sample.write(get_random_string(20))  # populate it with the random generator from above
+sample.close()
+
+counters = {chr(ch): 0 for ch in range(ord('a'), ord('z') + 1)}  # create a dict where we store the count of each letter
+file_name = input("Choose a file: ")
+
+try:
+    f = open(file_name, 'rt')  # read through the file and count each char appearance
+    for line in f:
+        for char in line:
+            if char.isalpha():
+                counters[char.lower()] += 1
+    f.close()
+    f = open(file_name+'.hist', 'wt')  # write a new file with .hist extension, where we add the filter results
+    for char in sorted(counters.keys(), key=lambda x: counters[x], reverse=True):
+        cnt = counters[char]
+        if cnt > 0:
+            f.write(char + ' --> ' + str(counters[char]) + '\n')
+            print(char, '->', cnt)
+except IOError as e:
+    print("I/O Error", strerror(e.errno))
+
+# os.remove("samplefile.txt")  # delete the created file
